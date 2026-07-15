@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#215c52">
+  <meta name="description" content="Rutina de fuerza, movilidad y equilibrio de cuatro semanas.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Rutina de Papá · 4 semanas</title>
+  <style>
+    :root {
+      --ink:#19312e; --muted:#61726f; --paper:#f5f2ea; --card:#fffefa;
+      --green:#215c52; --green2:#dcebe6; --gold:#c7832d; --gold2:#fff1dc;
+      --red:#9e3f3f; --red2:#f9e4e2; --line:#d9ded9; --shadow:0 10px 28px rgba(25,49,46,.08);
+      --radius:20px; --base:18px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:var(--base)/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer;touch-action:manipulation;min-height:46px}
+    a{color:var(--green);font-weight:750}
+    .wrap{max-width:1080px;margin:auto;padding:18px 18px 60px}
+    header{background:linear-gradient(135deg,#174b43,#327568);color:white;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+    header h1{font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.04;margin:0 0 10px}
+    header p{margin:0;max-width:760px;color:#e5f2ee}
+    .headline{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .header-actions{display:flex;flex-direction:column;gap:9px;min-width:170px}
+    .font-button{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12);color:white;border-radius:14px;padding:9px 13px;font-weight:800}
+    .install-button{border:0;background:#f5d79d;color:#49300f;border-radius:14px;padding:10px 13px;font-weight:900}
+    .notice{margin:16px 0;background:var(--gold2);border:1px solid #efc486;border-left:6px solid var(--gold);padding:14px 16px;border-radius:14px}
+    nav{position:sticky;top:0;z-index:10;display:flex;gap:8px;overflow:auto;padding:12px 0;background:linear-gradient(var(--paper) 75%,transparent)}
+    nav button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:11px 15px;border-radius:999px;font-weight:800}
+    nav button.active{background:var(--green);color:white;border-color:var(--green)}
+    .panel{display:none}.panel.active{display:block}
+    h2{font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.2;margin:26px 0 14px}
+    h3{line-height:1.25;margin:0 0 8px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .eyebrow{text-transform:uppercase;letter-spacing:.09em;font-size:.76rem;font-weight:900;color:var(--green)}
+    .muted{color:var(--muted)}
+    .big{font-size:1.55rem;font-weight:900;line-height:1.15}
+    .metric{display:flex;align-items:center;gap:10px;margin-top:10px}
+    .metric b{font-size:1.2rem}
+    .pill{display:inline-flex;align-items:center;gap:6px;background:var(--green2);color:var(--green);padding:5px 10px;border-radius:999px;font-weight:850;font-size:.86rem}
+    .pill.walk{background:#e7edf8;color:#385b8a}.pill.recovery{background:#eee8f6;color:#644a83}
+    label{display:block;font-weight:850;margin:10px 0 5px}
+    input,textarea{width:100%;border:1px solid #bbc8c4;border-radius:12px;background:white;padding:11px;color:var(--ink)}
+    input:focus,textarea:focus{outline:3px solid #b9dcd1;border-color:var(--green)}
+    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .primary,.secondary,.danger{border:0;border-radius:14px;padding:12px 16px;font-weight:900}
+    .primary{background:var(--green);color:white}.secondary{background:var(--green2);color:var(--green)}.danger{background:var(--red2);color:var(--red)}
+    .action-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+    .status{margin-top:12px;border-radius:14px;padding:12px 14px;background:#edf3f1}
+    .status.warn{background:var(--gold2);color:#764915}.status.stop{background:var(--red2);color:#782b2b}
+    .session-list{list-style:none;padding:0;margin:10px 0}
+    .session-list li{display:grid;grid-template-columns:auto 1fr auto;gap:11px;align-items:start;border-top:1px solid var(--line);padding:13px 0}
+    .session-list input{width:24px;height:24px;margin:1px 0}
+    .reps{font-weight:900;color:var(--green);white-space:nowrap}
+    .timer{font-variant-numeric:tabular-nums;font-size:clamp(3rem,10vw,5.6rem);font-weight:950;letter-spacing:-.05em;line-height:1;text-align:center;margin:18px 0}
+    .timer-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    .week-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .week-tabs button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 12px;font-weight:850}
+    .week-tabs button.active{background:var(--green);color:white}
+    .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+    .day{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;min-height:155px}
+    .day.done{border:2px solid #57a087;background:#f1faf7}.day.today{box-shadow:0 0 0 3px #e8b763}
+    .day .num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--green2);font-weight:900;margin-bottom:8px}
+    .day h3{font-size:1rem}.day p{font-size:.88rem;color:var(--muted);margin:5px 0}
+    details.exercise{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+    details.exercise summary{display:flex;align-items:center;gap:13px;padding:16px;cursor:pointer;font-weight:900;list-style:none}
+    details.exercise summary::-webkit-details-marker{display:none}
+    .icon{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:var(--green2);font-size:1.5rem;flex:0 0 auto}
+    .exercise-body{padding:0 18px 18px;border-top:1px solid var(--line)}
+    .steps{padding-left:22px}.steps li{margin:7px 0}
+    .key{background:#edf3f1;border-radius:12px;padding:10px 12px}
+    .video-link{display:inline-block;margin-top:8px;background:#e7edf8;color:#244d80;text-decoration:none;padding:9px 12px;border-radius:11px}
+    .log-list{display:grid;gap:10px;margin-top:14px}
+    .log{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:10px;align-items:center}
+    .log small{display:block;color:var(--muted)}
+    .source-list li{margin:8px 0}
+    footer{margin-top:28px;color:var(--muted);font-size:.86rem;text-align:center}
+    dialog{width:min(92vw,560px);border:0;border-radius:22px;padding:0;box-shadow:0 24px 80px rgba(0,0,0,.28);color:var(--ink)}
+    dialog::backdrop{background:rgba(13,31,28,.68)}
+    .dialog-body{padding:22px}.dialog-body h2{margin-top:0}
+    .offline-badge{display:none;position:fixed;z-index:30;right:12px;top:12px;background:#3d4c49;color:white;padding:7px 11px;border-radius:999px;font-size:.78rem;font-weight:850}
+    body.offline .offline-badge{display:block}
+    @media(max-width:800px){
+      .span-4,.span-6,.span-8{grid-column:span 12}.days{grid-template-columns:repeat(2,1fr)}
+      .log{grid-template-columns:1fr 1fr}.headline{display:block}.header-actions{margin-top:14px;flex-direction:row;flex-wrap:wrap}.header-actions button{flex:1}
+    }
+    @media(max-width:600px){
+      body{padding-bottom:82px}.fields{grid-template-columns:1fr}.days{grid-template-columns:1fr}.wrap{padding:10px max(10px,env(safe-area-inset-right)) 40px max(10px,env(safe-area-inset-left))}.card{padding:16px}
+      header{padding:23px 18px;border-radius:22px}nav{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:50;padding:8px 7px max(8px,env(safe-area-inset-bottom));background:rgba(245,242,234,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);justify-content:space-around;overflow:visible}
+      nav button{font-size:.72rem;padding:9px 8px;min-width:0;flex:1;border-radius:12px;white-space:normal;line-height:1.15}
+      input,textarea{font-size:16px}.session-list li{grid-template-columns:auto 1fr}.session-list .reps{grid-column:2}
+    }
+    @media print{nav,.action-row,.font-button,.timer-controls{display:none!important}.panel{display:block!important}body{background:white}.card,header{box-shadow:none;break-inside:avoid}details.exercise .exercise-body{display:block}.days{grid-template-columns:repeat(4,1fr)}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="headline">
+        <div>
+          <div class="eyebrow" style="color:#bfe6db">Plan inicial · 4 semanas</div>
+          <h1>Rutina de Papá</h1>
+          <p>Fuerza, movilidad y confianza. Empezamos despacio para proteger la rodilla derecha y la mano derecha.</p>
+        </div>
+        <div class="header-actions">
+          <button class="install-button" id="installButton" type="button">Instalar en Android</button>
+          <button class="font-button" id="fontButton" type="button">Aumentar letra</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="offline-badge">Sin conexión · la app sigue disponible</div>
+
+    <div class="notice"><strong>Importante:</strong> este plan es una guía conservadora y no sustituye la valoración del médico o fisioterapeuta. Con dolor de rodilla 5/10, menisco roto, artrosis, pata de ganso y tenosinovitis, nunca hay que forzar para “terminar”.</div>
+
+    <nav aria-label="Secciones">
+      <button class="active" data-panel="today">Hoy</button>
+      <button data-panel="plan">Plan de 4 semanas</button>
+      <button data-panel="exercises">Ejercicios</button>
+      <button data-panel="log">Registro</button>
+      <button data-panel="safety">Seguridad</button>
+    </nav>
+
+    <section id="today" class="panel active">
+      <h2>La sesión de hoy</h2>
+      <div class="grid">
+        <article class="card span-4">
+          <div class="eyebrow">Programa</div>
+          <label for="startDate">Fecha de comienzo</label>
+          <input id="startDate" type="date">
+          <div class="metric"><span>Semana</span><b id="todayWeek">1</b></div>
+          <div class="metric"><span>Día</span><b id="todayDay">1</b></div>
+          <p class="muted">La fecha queda guardada en este dispositivo.</p>
+        </article>
+        <article class="card span-8">
+          <div class="eyebrow">Antes de empezar</div>
+          <div class="fields">
+            <div><label for="preGlucose">Glucosa (mg/dl)</label><input id="preGlucose" type="number" inputmode="numeric" placeholder="Ej.: 128"></div>
+            <div><label for="prePain">Dolor de rodilla (0–10)</label><input id="prePain" type="number" min="0" max="10" inputmode="numeric" value="5"></div>
+            <div><label for="sysBP">Tensión máxima</label><input id="sysBP" type="number" inputmode="numeric" placeholder="Ej.: 135"></div>
+            <div><label for="diaBP">Tensión mínima</label><input id="diaBP" type="number" inputmode="numeric" placeholder="Ej.: 82"></div>
+          </div>
+          <button class="primary" id="checkSafety" type="button" style="margin-top:12px">Comprobar antes de empezar</button>
+          <div class="status" id="safetyStatus">Introduce los datos disponibles y pulsa “Comprobar”.</div>
+        </article>
+        <article class="card span-8">
+          <div class="eyebrow" id="sessionType">Fuerza A</div>
+          <div class="big" id="sessionTitle">Activación de piernas y equilibrio</div>
+          <p id="sessionIntro" class="muted"></p>
+          <ul class="session-list" id="sessionList"></ul>
+          <button class="primary" id="completeSession" type="button">Marcar sesión completada</button>
+        </article>
+        <article class="card span-4">
+          <div class="eyebrow">Temporizador</div>
+          <div class="timer" id="timer">30:00</div>
+          <div class="timer-controls">
+            <button class="primary" id="timerStart" type="button">Empezar</button>
+            <button class="secondary" id="timerPause" type="button">Pausa</button>
+            <button class="secondary" id="timerReset" type="button">Reiniciar</button>
+          </div>
+          <p class="muted" style="text-align:center">Se puede parar siempre que lo necesite.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="plan" class="panel">
+      <h2>Plan completo</h2>
+      <p>Semanas 1 y 2: 30 minutos. Semanas 3 y 4: 40 minutos. Hay tres sesiones de fuerza por semana; los demás días ayudan a recuperarse y mantener el hábito.</p>
+      <div class="week-tabs" id="weekTabs"></div>
+      <div class="days" id="daysGrid"></div>
+      <div class="card" style="margin-top:14px">
+        <h3>Cómo progresamos</h3>
+        <p><strong>Semana 1:</strong> aprender los movimientos, 2 vueltas y descansos amplios.</p>
+        <p><strong>Semana 2:</strong> mantener 2 vueltas y mejorar el control; añadir 1–2 repeticiones solo si la rodilla responde bien.</p>
+        <p><strong>Semana 3:</strong> sesiones de 40 minutos y hasta 3 vueltas, sin añadir peso.</p>
+        <p><strong>Semana 4:</strong> consolidar 3 vueltas. Todavía no se carga la mano derecha. El peso externo se valorará después, una sola variable cada vez.</p>
+      </div>
+    </section>
+
+    <section id="exercises" class="panel">
+      <h2>Biblioteca de ejercicios</h2>
+      <p>Pulsa sobre cada ejercicio para ver la explicación. Todos se hacen despacio, respirando con normalidad y sin buscar un recorrido doloroso.</p>
+      <div id="exerciseLibrary"></div>
+    </section>
+
+    <section id="log" class="panel">
+      <h2>Registro de evolución</h2>
+      <div class="card">
+        <div class="fields">
+          <div><label for="logDate">Fecha</label><input id="logDate" type="date"></div>
+          <div><label for="logPainBefore">Dolor antes (0–10)</label><input id="logPainBefore" type="number" min="0" max="10"></div>
+          <div><label for="logPainAfter">Dolor 2 h después (0–10)</label><input id="logPainAfter" type="number" min="0" max="10"></div>
+          <div><label for="logGlucoseBefore">Glucosa antes</label><input id="logGlucoseBefore" type="number"></div>
+          <div><label for="logGlucoseAfter">Glucosa después</label><input id="logGlucoseAfter" type="number"></div>
+          <div><label for="logBP">Tensión</label><input id="logBP" type="text" placeholder="Ej.: 135/82"></div>
+        </div>
+        <label for="logNotes">Notas</label>
+        <textarea id="logNotes" rows="3" placeholder="Rodilla, mano, cansancio, ejercicios modificados…"></textarea>
+        <div class="action-row">
+          <button class="primary" id="saveLog" type="button">Guardar registro</button>
+          <button class="secondary" id="exportLog" type="button">Exportar CSV</button>
+        </div>
+      </div>
+      <div class="log-list" id="logList"></div>
+    </section>
+
+    <section id="safety" class="panel">
+      <h2>Reglas de seguridad</h2>
+      <div class="grid">
+        <article class="card span-6">
+          <div class="eyebrow">Diabetes y glimepirida</div>
+          <h3>Evitar una bajada de glucosa</h3>
+          <ul>
+            <li>No cambiar medicación ni dosis sin indicación médica.</li>
+            <li>Durante las primeras sesiones, medir antes y después.</li>
+            <li>Llevar siempre 15–20 g de hidrato de absorción rápida: tabletas de glucosa, zumo o azúcar.</li>
+            <li>Si está en 100 mg/dl o menos, parar, tomar el hidrato indicado y repetir la medición a los 15 minutos antes de continuar.</li>
+            <li>Temblor, sudor frío, hambre repentina, mareo o confusión: detenerse y comprobar la glucosa.</li>
+          </ul>
+        </article>
+        <article class="card span-6">
+          <div class="eyebrow">Rodilla</div>
+          <h3>Regla de las dos horas</h3>
+          <p>Si dos horas después la rodilla está más dolorida que antes, la siguiente sesión debe tener menos tiempo, menos repeticiones o menor recorrido.</p>
+          <p><strong>Parar:</strong> dolor agudo, bloqueo, fallo de la rodilla, inflamación rápida o imposibilidad de apoyar.</p>
+        </article>
+        <article class="card span-6">
+          <div class="eyebrow">Hipertensión</div>
+          <h3>Respirar durante el esfuerzo</h3>
+          <p>Expulsar el aire al levantarse o hacer fuerza. Nunca apretar y contener la respiración.</p>
+          <p>Si la tensión es 180/120 o superior, repetir la medición y no entrenar. Con dolor torácico, falta de aire, debilidad, alteración de visión o habla: llamar al 112.</p>
+        </article>
+        <article class="card span-6">
+          <div class="eyebrow">Mano derecha</div>
+          <h3>Sin agarre cargado</h3>
+          <p>No usar mancuernas, bandas sujetas con la mano, flexiones ni apoyos dolorosos durante esta fase. Los movimientos de hombros se hacen sin peso y con la muñeca relajada.</p>
+        </article>
+      </div>
+      <h2>Fuentes sanitarias</h2>
+      <ul class="source-list">
+        <li><a href="https://diabetesjournals.org/care/article/49/Supplement_1/S277/163921/13-Older-Adults-Standards-of-Care-in-Diabetes-2026" target="_blank" rel="noopener">ADA 2026: diabetes en personas mayores y actividad física</a></li>
+        <li><a href="https://diabetes.org/health-wellness/fitness/blood-glucose-and-exercise" target="_blank" rel="noopener">ADA: glucosa y ejercicio</a></li>
+        <li><a href="https://cima.aemps.es/cima/dochtml/ft/68780/FT_68780.html" target="_blank" rel="noopener">AEMPS: ficha técnica de glimepirida</a></li>
+        <li><a href="https://acsm.org/exercise-for-the-prevention-and-treatment-of-hypertension/" target="_blank" rel="noopener">ACSM: ejercicio e hipertensión</a></li>
+        <li><a href="https://www.arthritis.org/health-wellness/healthy-living/physical-activity/success-strategies/how-hard-should-you-work-out" target="_blank" rel="noopener">Arthritis Foundation: regla de dolor tras el ejercicio</a></li>
+      </ul>
+    </section>
+
+    <footer>Rutina inicial personalizada · 67 años · 1,73 m · 90 kg · Diabetes tipo 2 · Hipertensión</footer>
+
+    <dialog id="installDialog">
+      <div class="dialog-body">
+        <div class="eyebrow">Instalación en Android</div>
+        <h2>Instalar “Rutina de Papá”</h2>
+        <div id="installMessage">
+          <ol>
+            <li>Abre la dirección publicada de la aplicación en Chrome.</li>
+            <li>Pulsa el menú de los tres puntos.</li>
+            <li>Elige <strong>Instalar aplicación</strong> o <strong>Añadir a pantalla de inicio</strong>.</li>
+            <li>Confirma pulsando <strong>Instalar</strong>.</li>
+          </ol>
+          <p class="notice">Un archivo abierto desde Descargas no se puede instalar como PWA. Debe abrirse desde su dirección web segura.</p>
+        </div>
+        <button class="primary" id="closeInstall" type="button">Entendido</button>
+      </div>
+    </dialog>
+  </main>
+
+  <script>
+    const sessions = {
+      A:{type:'Fuerza A',title:'Piernas, cadera y equilibrio',intro:'Dos vueltas en semanas 1–2; hasta tres vueltas en semanas 3–4.',items:[
+        ['Calentamiento suave','5 min'],['Levantarse de la silla','6–8'],['Extensión de rodilla sentado','8 por lado'],['Separación lateral de cadera','8 por lado'],['Elevación de talones','10'],['Juntar omóplatos','10'],['Equilibrio semitándem','20 s/lado'],['Vuelta a la calma','5 min']
+      ]},
+      B:{type:'Fuerza B',title:'Cadera, movilidad y control',intro:'Movimientos cortos y controlados, sin cargar la mano derecha.',items:[
+        ['Calentamiento suave','5 min'],['Bisagra de cadera hacia la pared','8'],['Extensión de cadera de pie','8 por lado'],['Marcha sentado','8 por lado'],['Balanceo talón-punta','10'],['Elevación de brazos sin peso','8 por lado'],['Equilibrio con pies juntos','20–30 s'],['Vuelta a la calma','5 min']
+      ]},
+      W:{type:'Caminata',title:'Caminar y mantener movilidad',intro:'Ritmo cómodo: debe poder hablar. Dividir la caminata si la rodilla lo necesita.',items:[
+        ['Calentamiento y movilidad','5 min'],['Caminata cómoda','15–25 min'],['Movilidad de tobillos y hombros','5 min'],['Respiración y vuelta a la calma','5 min']
+      ]},
+      WB:{type:'Caminata + equilibrio',title:'Caminar y practicar estabilidad',intro:'Siempre cerca de una pared o silla estable.',items:[
+        ['Calentamiento','5 min'],['Caminata cómoda','15–25 min'],['Equilibrio semitándem','3 × 20 s'],['Elevación de talones','2 × 10'],['Vuelta a la calma','5 min']
+      ]},
+      R:{type:'Recuperación',title:'Día suave para recuperar',intro:'El objetivo es moverse y terminar mejor de lo que empezó.',items:[
+        ['Respiración tranquila sentado','3 min'],['Movilidad de tobillos','3 min'],['Marcha sentado suave','5 min'],['Paseo muy cómodo','10–20 min'],['Movilidad suave','5 min'],['Respiración final','4 min']
+      ]}
+    };
+    const patterns = [
+      ['A','W','B','W','A','WB','R'], ['B','W','A','W','B','WB','R'],
+      ['A','W','B','W','A','WB','R'], ['B','W','A','W','B','WB','R']
+    ];
+    const dayNames=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+    const exercises=[
+      {icon:'🪑',name:'Levantarse de la silla',why:'Fortalece muslos y glúteos para levantarse y subir escalones.',steps:['Colocar una silla estable contra la pared.','Sentarse cerca del borde, con los pies a la anchura de las caderas.','Inclinar ligeramente el tronco y empujar el suelo con los pies.','Levantarse expulsando el aire.','Sentarse despacio, sin dejarse caer.'],key:'Si molesta, elevar el asiento con un cojín firme. Nada de sentadilla profunda.',video:'https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/'},
+      {icon:'🦵',name:'Extensión de rodilla sentado',why:'Activa el cuádriceps sin cargar todo el peso sobre la rodilla.',steps:['Sentarse con la espalda apoyada.','Estirar una pierna hasta un punto cómodo.','Mantener 1–2 segundos.','Bajar lentamente y cambiar de lado.'],key:'No bloquear con fuerza ni buscar dolor.',video:'https://elht.nhs.uk/services/integrated-msk-pain-and-rheumatology-service/lower-limb-videos'},
+      {icon:'↔️',name:'Separación lateral de cadera',why:'Fortalece los músculos que estabilizan pelvis y rodilla.',steps:['Sujetarse con la mano izquierda.','Mantener tronco recto y dedos del pie al frente.','Separar la pierna unos centímetros, sin balancearla.','Volver lentamente.'],key:'Movimiento pequeño. No inclinar el cuerpo.',video:'https://www.southtees.nhs.uk/resources/hip-abduction-in-standing/'},
+      {icon:'⬆️',name:'Elevación de talones',why:'Fortalece gemelos y ayuda al equilibrio y la marcha.',steps:['Situarse detrás de una silla.','Subir ambos talones lentamente.','Mantener un segundo.','Bajar de forma controlada.'],key:'Sujetarse solo lo necesario y sin cargar la mano dolorida.',video:'https://www.nhs.uk/live-well/exercise/strength-exercises/'},
+      {icon:'🚪',name:'Bisagra de cadera hacia la pared',why:'Enseña a usar cadera y glúteos protegiendo la rodilla.',steps:['Ponerse de espaldas a una pared, a unos 15 cm.','Flexionar muy ligeramente las rodillas.','Llevar el trasero hacia atrás hasta tocar la pared.','Volver apretando suavemente los glúteos.'],key:'Espalda larga; no hacer una sentadilla.',video:'https://www.nhs.uk/live-well/exercise/strength-exercises/'},
+      {icon:'↩️',name:'Extensión de cadera de pie',why:'Activa glúteos, importantes para caminar y levantarse.',steps:['Sujetarse con la mano izquierda.','Llevar una pierna ligeramente hacia atrás.','Mantener el tronco quieto.','Volver despacio y cambiar de pierna.'],key:'No arquear la zona lumbar.',video:'https://www.nth.nhs.uk/resources/standing-exercises/'},
+      {icon:'👣',name:'Marcha sentado',why:'Eleva suavemente el pulso y moviliza las caderas.',steps:['Sentarse alto, sin hundirse.','Elevar un pie unos centímetros.','Bajarlo y alternar.','Mantener una respiración tranquila.'],key:'No elevar la rodilla hasta un punto doloroso.',video:'https://www.nhs.uk/live-well/exercise/sitting-exercises/'},
+      {icon:'⚖️',name:'Equilibrio semitándem',why:'Mejora estabilidad y confianza al caminar.',steps:['Colocarse junto a una silla o pared.','Poner un pie un poco por delante del otro.','Mirar al frente y mantener la posición.','Cambiar la posición de los pies.'],key:'Nunca cerrar los ojos. Tener apoyo al alcance.',video:'https://www.nhs.uk/live-well/exercise/balance-exercises/'},
+      {icon:'🫁',name:'Juntar omóplatos',why:'Activa la espalda alta sin necesidad de agarrar peso.',steps:['Sentarse o ponerse de pie con postura cómoda.','Llevar suavemente los hombros hacia atrás.','Acercar los omóplatos sin levantar los hombros.','Mantener 2 segundos y soltar.'],key:'La mano permanece relajada.',video:'https://www.nhs.uk/live-well/exercise/flexibility-exercises/'}
+    ];
+
+    const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+    const iso=d=>{const x=new Date(d);x.setMinutes(x.getMinutes()-x.getTimezoneOffset());return x.toISOString().slice(0,10)};
+    const memoryStore={};
+    const storage={
+      getItem(key){try{return window.localStorage.getItem(key)}catch(e){return memoryStore[key]||null}},
+      setItem(key,value){try{window.localStorage.setItem(key,value)}catch(e){memoryStore[key]=String(value)}}
+    };
+    let startDate=storage.getItem('papaStart')||iso(new Date()); $('#startDate').value=startDate; $('#logDate').value=iso(new Date());
+    let selectedWeek=0, timerSeconds=1800, timerBase=1800, timerId=null;
+
+    function programDay(){
+      const now=new Date(); const start=new Date(startDate+'T00:00:00');
+      let diff=Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-start)/86400000);
+      if(diff<0) diff=0; if(diff>27) diff=27;
+      return {week:Math.floor(diff/7),day:diff%7,index:diff};
+    }
+    function renderToday(){
+      const p=programDay(), code=patterns[p.week][p.day], s=sessions[code], mins=p.week<2?30:40;
+      $('#todayWeek').textContent=p.week+1; $('#todayDay').textContent=p.day+1+' · '+dayNames[p.day];
+      $('#sessionType').textContent=s.type; $('#sessionTitle').textContent=s.title; $('#sessionIntro').textContent=s.intro;
+      $('#sessionList').innerHTML=s.items.map((it,i)=>`<li><input type="checkbox" aria-label="Completar ${it[0]}"><span><strong>${it[0]}</strong></span><span class="reps">${it[1]}</span></li>`).join('');
+      timerBase=mins*60; if(!timerId){timerSeconds=timerBase;paintTimer()}
+      selectedWeek=p.week; renderPlan();
+    }
+    function renderPlan(){
+      $('#weekTabs').innerHTML=[0,1,2,3].map(w=>`<button class="${w===selectedWeek?'active':''}" data-week="${w}">Semana ${w+1} · ${w<2?'30':'40'} min</button>`).join('');
+      const p=programDay(), done=JSON.parse(storage.getItem('papaDone')||'{}');
+      $('#daysGrid').innerHTML=patterns[selectedWeek].map((code,d)=>{
+        const idx=selectedWeek*7+d, key='d'+idx, s=sessions[code];
+        return `<article class="day ${done[key]?'done':''} ${p.index===idx?'today':''}"><div class="num">${d+1}</div><span class="pill ${code==='W'||code==='WB'?'walk':code==='R'?'recovery':''}">${s.type}</span><h3>${dayNames[d]}</h3><p>${s.title}</p><strong>${selectedWeek<2?30:40} min</strong>${done[key]?'<p>✓ Completado</p>':''}</article>`
+      }).join('');
+      $$('#weekTabs button').forEach(b=>b.onclick=()=>{selectedWeek=+b.dataset.week;renderPlan()});
+    }
+    function renderExercises(){
+      $('#exerciseLibrary').innerHTML=exercises.map(e=>`<details class="exercise"><summary><span class="icon">${e.icon}</span><span>${e.name}<small style="display:block;color:var(--muted);font-weight:500">${e.why}</small></span></summary><div class="exercise-body"><ol class="steps">${e.steps.map(x=>`<li>${x}</li>`).join('')}</ol><div class="key"><strong>Clave:</strong> ${e.key}</div><a class="video-link" href="${e.video}" target="_blank" rel="noopener">Ver demostración sanitaria ↗</a></div></details>`).join('');
+    }
+    function paintTimer(){const m=Math.floor(timerSeconds/60),s=timerSeconds%60;$('#timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+    $('#timerStart').onclick=()=>{if(timerId)return;timerId=setInterval(()=>{if(timerSeconds<=0){clearInterval(timerId);timerId=null;alert('Sesión terminada. Respira, revisa cómo responde la rodilla y anótalo.');return}timerSeconds--;paintTimer()},1000)};
+    $('#timerPause').onclick=()=>{clearInterval(timerId);timerId=null};
+    $('#timerReset').onclick=()=>{clearInterval(timerId);timerId=null;timerSeconds=timerBase;paintTimer()};
+    $('#startDate').onchange=e=>{startDate=e.target.value||iso(new Date());storage.setItem('papaStart',startDate);renderToday()};
+    $('#checkSafety').onclick=()=>{
+      const g=+$('#preGlucose').value,p=+$('#prePain').value,sys=+$('#sysBP').value,dia=+$('#diaBP').value,box=$('#safetyStatus');
+      box.className='status';
+      if((sys>=180)||(dia>=120)){box.classList.add('stop');box.innerHTML='<strong>No empezar.</strong> Repetir la tensión tras un minuto. Si sigue igual, contactar con un profesional; con síntomas de alarma, llamar al 112.'}
+      else if(g && g<=100){box.classList.add('stop');box.innerHTML='<strong>No empezar todavía.</strong> Tomar 15–20 g de hidrato rápido según su pauta y repetir glucosa en 15 minutos. Continuar solo cuando esté por encima de 100 mg/dl y se encuentre bien.'}
+      else if(p>=7){box.classList.add('stop');box.innerHTML='<strong>Hoy no toca fuerza.</strong> Elegir recuperación suave. Si hay bloqueo, fallo o inflamación rápida, consultar.'}
+      else if(p>=5){box.classList.add('warn');box.innerHTML='<strong>Modo adaptado.</strong> Acortar recorrido y hacer una vuelta menos. Parar si el dolor aumenta o cambia a dolor agudo.'}
+      else box.innerHTML='<strong>Puede comenzar con prudencia.</strong> Ritmo cómodo, respiración continua y apoyo cercano.';
+    };
+    $('#completeSession').onclick=()=>{const p=programDay(),done=JSON.parse(storage.getItem('papaDone')||'{}');done['d'+p.index]=true;storage.setItem('papaDone',JSON.stringify(done));renderPlan();$('#completeSession').textContent='✓ Sesión completada';};
+    $$('nav button').forEach(b=>b.onclick=()=>{$$('nav button').forEach(x=>x.classList.remove('active'));$$('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#'+b.dataset.panel).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})});
+    $('#fontButton').onclick=()=>{const large=document.body.dataset.large==='1';document.body.dataset.large=large?'0':'1';document.documentElement.style.setProperty('--base',large?'18px':'21px');$('#fontButton').textContent=large?'Aumentar letra':'Letra normal'};
+    function getLogs(){return JSON.parse(storage.getItem('papaLogs')||'[]')}
+    function renderLogs(){const logs=getLogs();$('#logList').innerHTML=logs.length?logs.slice().reverse().map(l=>`<div class="log"><strong>${l.date}</strong><div><small>Dolor</small>${l.pb||'—'} → ${l.pa||'—'}</div><div><small>Glucosa</small>${l.gb||'—'} → ${l.ga||'—'}</div><div><small>Tensión</small>${l.bp||'—'}</div><div><small>Notas</small>${l.notes||'—'}</div></div>`).join(''):'<p class="muted">Todavía no hay registros.</p>'}
+    $('#saveLog').onclick=()=>{const logs=getLogs();logs.push({date:$('#logDate').value,pb:$('#logPainBefore').value,pa:$('#logPainAfter').value,gb:$('#logGlucoseBefore').value,ga:$('#logGlucoseAfter').value,bp:$('#logBP').value,notes:$('#logNotes').value});storage.setItem('papaLogs',JSON.stringify(logs));renderLogs();$('#logNotes').value=''};
+    $('#exportLog').onclick=()=>{const rows=[['Fecha','Dolor antes','Dolor después','Glucosa antes','Glucosa después','Tensión','Notas'],...getLogs().map(l=>[l.date,l.pb,l.pa,l.gb,l.ga,l.bp,l.notes])];const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='registro_rutina_papa.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+    let installPrompt=null;
+    const installDialog=$('#installDialog');
+    window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;$('#installButton').textContent='Instalar ahora'});
+    $('#installButton').onclick=async()=>{
+      if(installPrompt){
+        installPrompt.prompt();
+        await installPrompt.userChoice;
+        installPrompt=null;
+      }else installDialog.showModal();
+    };
+    $('#closeInstall').onclick=()=>installDialog.close();
+    window.addEventListener('appinstalled',()=>{$('#installButton').textContent='✓ Aplicación instalada';$('#installButton').disabled=true});
+    if(window.matchMedia('(display-mode: standalone)').matches){$('#installButton').textContent='✓ Aplicación instalada';$('#installButton').disabled=true}
+    const updateOnlineState=()=>document.body.classList.toggle('offline',!navigator.onLine);
+    window.addEventListener('online',updateOnlineState);window.addEventListener('offline',updateOnlineState);updateOnlineState();
+    if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+      window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+    }
+    renderExercises();renderToday();renderLogs();
+  </script>
+</body>
+</html>
