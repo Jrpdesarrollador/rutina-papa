@@ -1,4 +1,4 @@
-const CACHE='rutina-papa-v3';
+const CACHE='rutina-papa-v5-fase2-brazos';
 const CORE=[
   './',
   './index.html',
