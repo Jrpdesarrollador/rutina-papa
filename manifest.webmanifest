@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Rutina de Papá",
-  "short_name": "Rutina Papá",
-  "description": "Plan personalizado de fuerza, movilidad y equilibrio de cuatro semanas.",
+  "name": "Rutina de Papá 2.0 · Brazos",
+  "short_name": "Rutina Papá 2",
+  "description": "Segunda fase personalizada de fuerza, movilidad, caminata y equilibrio.",
   "lang": "es-ES",
   "start_url": "./",
   "scope": "./",
